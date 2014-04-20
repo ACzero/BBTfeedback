@@ -1,0 +1,8 @@
+接口说明:
+url : host/feedback
+method: POST
+
+param: platform(required)   Value:0=>iOS,1=>Andriod,2=>WP
+	   body(required)
+	   version(required)
+	   contacts(optional)
