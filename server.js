@@ -1,9 +1,3 @@
-var successCode = 42;
-var errorCode = 23;
-var rejectCode = 67;
-
-var mailSender = require('./mailSender');
-
 var reqHelperModule = require('./reqHelper');
 var reqHelper = new reqHelperModule();
 
@@ -15,21 +9,18 @@ app.post("/feedback",function(req,res){
 	var platform = req.body.platform;
 	var body = req.body.body;
 	var version = req.body.version;
-	console.log(platform + body + version);
+	var apiVersion = req.body.apiVersion;
+	var contacts = req.body.contacts;
 
-	if(!reqHelper.isTokenCorrect(req.body.token))
+	var resMessage;
+	switch(apiVersion)
 	{
-		res.send(reqHelper.toJson(rejectCode));
-		return;
+		case "0.1":
+			resMessage = reqHelper.api_v1(platform,body,version,apiVersion,contacts);
+			break;
+		default:
+			resMessage = reqHelper.toJson(10,"apiVersion is invalid");
 	}
-	if(reqHelper.isReqCorrect(platform,body,version))
-	{
-		var title = reqHelper.makeTitle(platform,version);
-		var text = reqHelper.makeText(body,req.body.contacts);
-		console.log(title + '    ' + text);
-		//mailSender.sendMail(title,text);
-		res.send(reqHelper.toJson(successCode));
-	}
-	res.send(reqHelper.toJson(errorCode));                                
+	res.send(resMessage);	                                
 });                                                     
 app.listen(3000);

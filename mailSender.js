@@ -15,7 +15,7 @@ function sendMail(title,feedback)
 
 	var mailOptions = {
 	    from: "282493754@163.com", // sender address
-	    to: "example@qq.com", // list of receivers
+	    to: "bbtbusfeedback@gmail.com", // list of receivers
 	    subject: title, // Subject line
 	    text: feedback, // plaintext body
 	}
