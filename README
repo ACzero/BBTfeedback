@@ -1,8 +1,17 @@
-接口说明:
-url : host/feedback
-method: POST
+#波板糖反馈接口
+##
+说明:App使用POST方式发送请求,由服务器端检查参数后再向指定邮箱发送邮件。
 
-param: platform(required)   Value:0=>iOS,1=>Andriod,2=>WP
-	   body(required)
-	   version(required)
-	   contacts(optional)
+####地址
+202.38.194.214:3000/feedback
+####方式
+POST
+####参数列表
+- apiVersion (必须,接口版本)
+- platform (必须,值为0,1,2.分别代表iOS,Andriod,WP)
+- body (必须,反馈内容)
+- version (必须,应用版本)
+- contacts(可选,反馈用户联系方式)
+
+####当前接口版本:
+0.1
