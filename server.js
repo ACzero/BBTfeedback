@@ -12,6 +12,7 @@ app.post("/feedback",function(req,res){
 	var version = req.body.version;
 	var apiVersion = req.body.apiVersion;
 	var contacts = req.body.contacts;
+	res.set('Content-Type', 'application/json');
 
 	var resMessage;
 	switch(apiVersion)
@@ -25,7 +26,8 @@ app.post("/feedback",function(req,res){
 	res.send(resMessage);	                                
 });
 
-app.get("/notice",function(req,res){
+app.get("/notice",function(req,res){	
+	res.set('Content-Type', 'application/json');
 	fs.readFile('notice.txt',function(err,content)
 	{
 		if(err)
