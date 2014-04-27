@@ -19,7 +19,7 @@ app.post("/feedback",function(req,res){
 
 	if(!reqHelper.isTokenCorrect(req.body.token))
 	{
-		res.send(rejectCode);
+		res.send(reqHelper.toJson(rejectCode));
 		return;
 	}
 	if(reqHelper.isReqCorrect(platform,body,version))
@@ -28,8 +28,8 @@ app.post("/feedback",function(req,res){
 		var text = reqHelper.makeText(body,req.body.contacts);
 		console.log(title + '    ' + text);
 		//mailSender.sendMail(title,text);
-		res.send(successCode);
+		res.send(reqHelper.toJson(successCode));
 	}
-	res.send(errorCode);                                
+	res.send(reqHelper.toJson(errorCode));                                
 });                                                     
 app.listen(3000);

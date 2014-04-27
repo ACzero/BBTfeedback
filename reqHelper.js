@@ -53,6 +53,16 @@ function reqHelper()
 		}
 		return body;
 	}
+
+	/// <summary>
+	/// 把code转换成Json格式
+	/// </summary>
+	/// <param name = 'code'></param>
+	this.toJson = function(code)
+	{
+		var jArray = {'Code':code};
+		return JSON.stringify(jArray);
+	}
 }
 
 module.exports = reqHelper;
