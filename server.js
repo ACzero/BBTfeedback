@@ -1,3 +1,4 @@
+var fs = require('fs');
 var reqHelperModule = require('./reqHelper');
 var reqHelper = new reqHelperModule();
 
@@ -22,5 +23,21 @@ app.post("/feedback",function(req,res){
 			resMessage = reqHelper.toJson(10,"apiVersion is invalid");
 	}
 	res.send(resMessage);	                                
-});                                                     
+});
+
+app.get("/notice",function(req,res){
+	fs.readFile('notice.txt',function(err,content)
+	{
+		if(err)
+		{
+			throw err;
+		}
+		var text = content.toString();
+		var jArray = {'notice' : text};
+		var resMessage = JSON.stringify(jArray)
+		resMessage = resMessage.replace(/\s/,"");
+		res.send(resMessage);
+	});
+});
+                                                     
 app.listen(3000);
