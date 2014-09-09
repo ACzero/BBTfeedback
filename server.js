@@ -28,7 +28,13 @@ app.post("/feedback",function(req,res){
 
 app.get("/notice",function(req,res){	
 	res.set('Content-Type', 'application/json');
-	fs.readFile('notice.txt',function(err,content)
+	var fileName = "notice.txt";
+	if(req.body.platform == "test")
+	{
+		fileName = 'test.txt';
+	}
+
+	fs.readFile(fileName,function(err,content)
 	{
 		if(err)
 		{
