@@ -29,7 +29,7 @@ app.post("/feedback",function(req,res){
 app.get("/notice",function(req,res){	
 	res.set('Content-Type', 'application/json');
 	var fileName = "notice.txt";
-	var platform = req.body.platform;
+	var platform = req.params.platform;
 	if(platform == "test")
 	{
 		fileName = 'test.txt';
