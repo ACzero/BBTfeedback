@@ -30,9 +30,9 @@ app.get("/notice",function(req,res){
 	res.set('Content-Type', 'application/json');
 	var fileName = "notice.txt";
 	var platform = req.param('platform');
-	if(platform == "test")
+	if(platform == "wp")
 	{
-		fileName = 'test.txt';
+		fileName = 'wp.txt';
 	}
 
 	fs.readFile(fileName,function(err,content)
