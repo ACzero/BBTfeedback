@@ -28,11 +28,14 @@ app.post("/feedback",function(req,res){
 
 app.get("/notice",function(req,res){	
 	res.set('Content-Type', 'application/json');
-	var fileName = "notice.txt";
+	//var fileName = "notice.txt";
 	var platform = req.param('platform');
+	var text = "校巴正常运行中。
+	WindowsPhone消息:2.3版本已发布,加入2D地图功能,没有更新推送的用户请到应用商店重新下载(新版本已经把2.5D地图数据分离,可以在应用内下载或者从SD卡导入,因此新版本大小只有2mb)";
 	if(platform == "wp")
 	{
 		fileName = 'wp.txt';
+		text = "校巴正常运行中。";
 	}
 
 	// fs.readFile(fileName,function(err,content)
@@ -48,7 +51,6 @@ app.get("/notice",function(req,res){
 	// 	resMessage = resMessage.replace(/\s/,"");
 	// 	res.send(resMessage);
 	// });
-	var text = "中文";
 	var jArray = {'notice' : text};
 	var resMessage = JSON.stringify(jArray)
 	resMessage = resMessage.replace(/\s/,"");
