@@ -39,7 +39,7 @@ app.get("/notice",function(req,res){
 	{
 		if(err)
 		{
-			throw err;
+			throw err.message;
 		}
 		var text = content.toString();
 		var jArray = {'notice' : text};
