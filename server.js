@@ -28,25 +28,33 @@ app.post("/feedback",function(req,res){
 
 app.get("/notice",function(req,res){	
 	res.set('Content-Type', 'application/json');
-	var fileName = "./notice.txt";
+	// var fileName = "notice.txt";
+	var text = '校巴正常运行中。
+Windows Phone消息:2.3版本已更新，加入2D地图功能，没有收到推送的用户请到应用商店重新下载(新版本已经把2.5D地图数据分离，可以在应用内下载或从SD卡导入，因此新版本大小只有2M)';
 	var platform = req.param('platform');
 	if(platform == "wp")
 	{
-		fileName = './wp.txt';
+		//fileName = 'wp.txt';
+		text = '校巴正常运行中。';
 	}
 
-	fs.readFile(fileName,function(err,content)
-	{
-		if(err)
-		{
-			throw err.message;
-		}
-		var text = content.toString();
-		var jArray = {'notice' : text};
-		var resMessage = JSON.stringify(jArray)
-		resMessage = resMessage.replace(/\s/,"");
-		res.send(resMessage);
-	});
+	// fs.readFile(fileName,function(err,content)
+	// {
+	// 	if(err)
+	// 	{
+	// 		throw err;
+	// 	}
+	// 	var text = content.toString();
+	// 	var jArray = {'notice' : text};
+	// 	var resMessage = JSON.stringify(jArray)
+	// 	resMessage = resMessage.replace(/\s/,"");
+	// 	res.send(resMessage);
+	// });
+	//var text = content.toString();
+	var jArray = {'notice' : text};
+	var resMessage = JSON.stringify(jArray)
+	resMessage = resMessage.replace(/\s/,"");
+	res.send(resMessage);
 });
                                                      
 app.listen(3000);
