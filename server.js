@@ -28,11 +28,11 @@ app.post("/feedback",function(req,res){
 
 app.get("/notice",function(req,res){	
 	res.set('Content-Type', 'application/json');
-	var fileName = "notice.txt";
+	var fileName = "./notice.txt";
 	var platform = req.param('platform');
 	if(platform == "wp")
 	{
-		fileName = 'wp.txt';
+		fileName = './wp.txt';
 	}
 
 	fs.readFile(fileName,function(err,content)
